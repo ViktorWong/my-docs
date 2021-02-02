@@ -8,7 +8,7 @@ export default {
   includes: ["assets"],
   plugins: ["sidebar", "prev_next", "gitalk"],
   github: "https://github.com/ViktorWong/my-docs",
-  title: "ViktorHub",
+  title: "Viktor‘s Docs",
   branth: "master",
   description: "我的图书馆",
   head: <link rel="icon" type="image/png" href="/favicon.png" />,
@@ -17,10 +17,16 @@ export default {
     { text: "面霸心经", link: "/interview/index.html" },
     { text: "修仙入门", link: "/start/index.html" },
     { text: "进阶功法", link: "/advanced/index.html" },
-    { text: "跨界码王", link: "/crossover/RN.html" },
+    { text: "跨界码王", link: "/crossover/index.html" },
   ],
   sidebar: {
-    "/collection/": ["collection/README.md"],
+    "/collection/": [
+    {
+      link: "collection/README.md",
+      title: "秘籍收藏",
+      children: []
+    }
+  ],
     "/interview/": [
       {
         link: "interview/README.md",
@@ -36,21 +42,35 @@ export default {
     ],
     "/crossover/": [
       {
-        link: "crossover/RN.md",
+        link: "crossover/README.md",
         title: "ReactNative",
-        children: [],
+        children: [
+          "crossover/RN.md",
+        ],
       },
     ],
     "/start/": [
-      "start/CSS.md",
-      "start/CSS3.md",
-      "start/JS.md",
-      "start/Mobile.md",
-      "start/Performance.md",
-      "start/Codeing.md",
-      "start/Mobx.md",
+      {
+        link: "start/README.md",
+        title: "修仙入门",
+        children: [
+          "start/CSS.md",
+          "start/CSS3.md",
+          "start/JS.md",
+          "start/Mobile.md",
+          "start/Performance.md",
+          "start/Codeing.md",
+          "start/Mobx.md",
+        ]
+      }
     ],
-    "/advanced/": ["advanced/README.md"],
+    "/advanced/": [
+      {
+        link: "advanced/README.md",
+        title: "进阶功法",
+        children: []
+      }
+    ],
   },
   md: {
     anchorLevel: [1, 2, 3, 4, 5, 6],
