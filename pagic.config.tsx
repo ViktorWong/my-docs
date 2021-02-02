@@ -2,7 +2,7 @@ import { React } from "https://deno.land/x/pagic/mod.ts";
 
 export default {
   srcDir: "docs", // 源目录
-  outDir: "public", // 输出目录
+  // outDir: "public", // 输出目录
   root: "/",
   theme: "docs",
   plugins: ["sidebar", "prev_next", "ga", "gitalk", "blog", "i18n"],
