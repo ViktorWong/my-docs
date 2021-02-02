@@ -35,7 +35,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:53:13.000Z",
+    'date': "2021-02-02T11:06:31.000Z",
     'updated': null,
     'excerpt': "作为一个数据层框架，mobx 基于一个最简单的原则： 在使用 mobx 作为 react 的 store 时，我们该如何进行渲染性能优化呢？ 通过分析源代码发现，在使用@observer 将 react 组件转换成一个监听者(Reactions)后，mobx 会为 react...",
     'cover': undefined,

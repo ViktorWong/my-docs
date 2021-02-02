@@ -61,7 +61,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:53:13.000Z",
+    'date': "2021-02-02T11:06:31.000Z",
     'updated': null,
     'excerpt': "提炼函数 在 JavaScript 开发中，我们大部分时间都在与函数打交道，所以我们希望这些函数有着良好的命名，函数体内包含的逻辑清晰明了。如果一个函数过长，不得不加上若干注释才能让这个函数显得易读一些，那这些函数就很有必要...",
     'cover': undefined,

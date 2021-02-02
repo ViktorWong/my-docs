@@ -134,6 +134,7 @@ export default {
             srcDir: 'docs',
             theme: 'docs',
             title: 'ViktorHub',
+            tocAd: React.createElement("div", { dangerouslySetInnerHTML: { __html: '\n <script data-ad-client="ca-pub-5052023368276507" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\n<!-- 192*128 -->\n<ins\n class="adsbygoogle"\n style="display:inline-block;width:192px;height:128px"\n data-ad-client="ca-pub-5052023368276507"\n></ins>\n<script>\n (adsbygoogle = window.adsbygoogle || []).push({});\n</script>' } }),
             tools: {
                 backToTop: true,
                 editOnGitHub: true

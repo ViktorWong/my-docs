@@ -39,7 +39,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:53:13.000Z",
+    'date': "2021-02-02T11:06:31.000Z",
     'updated': null,
     'excerpt': "优势 - 跨平台 （只有 0.2% 的平台特定代码） - 统一的设计语言，同时还能为不同平台提供不同设计 - React 的 scale 很好。组件化，简单的生命周期,声明式 - 迭代速度快（主要是 hot reloading 很快） - 大量基础设施的投入值得...",
     'cover': undefined,
