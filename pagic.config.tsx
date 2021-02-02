@@ -9,9 +9,9 @@ export default {
   plugins: ["sidebar", "prev_next", "gitalk"],
   github: "https://github.com/ViktorWong/my-docs",
   title: "ViktorHub",
-  branth: 'master',
+  branth: "master",
   description: "我的图书馆",
-  head: (<link rel="icon" type="image/png" href="/favicon.png" />),
+  head: <link rel="icon" type="image/png" href="/favicon.png" />,
   nav: [
     { text: "秘籍收藏", link: "/collection/index.html" },
     { text: "面霸心经", link: "/interview/index.html" },
@@ -53,7 +53,7 @@ export default {
         ],
       },
     ],
-    crossover: [
+    "/crossover/": [
       {
         link: "crossover/RN.md",
         title: "ReactNative",
@@ -70,6 +70,7 @@ export default {
       "start/Mobx.md",
     ],
     "/advanced/": ["advanced/README.md"],
+    "/": ["index.html"],
   },
   md: {
     anchorLevel: [1, 2, 3, 4, 5, 6],
@@ -86,6 +87,6 @@ export default {
     repo: "my-docs",
     owner: "ViktorWong",
     admin: ["ViktorWong"],
-    pagerDirection: 'first'
+    pagerDirection: "first",
   },
 };
