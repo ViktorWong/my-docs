@@ -100,7 +100,5 @@ export default {
     owner: 'xcatliu',
     admin: ['xcatliu'],
     pagerDirection: 'first',
-  },
-  watch: true,
-  serve: true
+  }
 };
