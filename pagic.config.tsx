@@ -6,16 +6,12 @@ export default {
   root: "/",
   theme: "docs",
   includes: ["assets"],
-  plugins: ["sidebar", "prev_next", "ga", "gitalk", "blog", "i18n"],
+  plugins: ["sidebar", "prev_next", "gitalk"],
   github: "https://github.com/ViktorWong/my-docs",
   title: "ViktorHub",
+  branth: 'master',
   description: "我的图书馆",
-  head: (
-    <>
-      <link rel="icon" type="image/png" href="/favicon.png" />
-      <script src="/assets/custom.js" />
-    </>
-  ),
+  head: (<link rel="icon" type="image/png" href="/favicon.png" />),
   nav: [
     { text: "秘籍收藏", link: "/collection/index.html" },
     { text: "面霸心经", link: "/interview/index.html" },
