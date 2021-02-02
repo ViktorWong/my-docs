@@ -74,7 +74,7 @@ export default {
                     text: '进阶功法'
                 },
                 {
-                    link: '/crossover/RN.html',
+                    link: '/crossover/index.html',
                     text: '跨界码王'
                 }
             ],
@@ -96,15 +96,25 @@ export default {
             serve: false,
             sidebar: {
                 '/advanced/': [
-                    'advanced/README.md'
+                    {
+                        children: [],
+                        link: 'advanced/README.md',
+                        title: '进阶功法'
+                    }
                 ],
                 '/collection/': [
-                    'collection/README.md'
+                    {
+                        children: [],
+                        link: 'collection/README.md',
+                        title: '秘籍收藏'
+                    }
                 ],
                 '/crossover/': [
                     {
-                        children: [],
-                        link: 'crossover/RN.md',
+                        children: [
+                            'crossover/RN.md'
+                        ],
+                        link: 'crossover/README.md',
                         title: 'ReactNative'
                     }
                 ],
@@ -122,18 +132,24 @@ export default {
                     }
                 ],
                 '/start/': [
-                    'start/CSS.md',
-                    'start/CSS3.md',
-                    'start/JS.md',
-                    'start/Mobile.md',
-                    'start/Performance.md',
-                    'start/Codeing.md',
-                    'start/Mobx.md'
+                    {
+                        children: [
+                            'start/CSS.md',
+                            'start/CSS3.md',
+                            'start/JS.md',
+                            'start/Mobile.md',
+                            'start/Performance.md',
+                            'start/Codeing.md',
+                            'start/Mobx.md'
+                        ],
+                        link: 'start/README.md',
+                        title: '修仙入门'
+                    }
                 ]
             },
             srcDir: 'docs',
             theme: 'docs',
-            title: 'ViktorHub',
+            title: 'Viktor‘s Docs',
             tocAd: React.createElement("div", { dangerouslySetInnerHTML: { __html: '\n <script data-ad-client="ca-pub-5052023368276507" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\n<!-- 192*128 -->\n<ins\n class="adsbygoogle"\n style="display:inline-block;width:192px;height:128px"\n data-ad-client="ca-pub-5052023368276507"\n></ins>\n<script>\n (adsbygoogle = window.adsbygoogle || []).push({});\n</script>' } }),
             tools: {
                 backToTop: true,
