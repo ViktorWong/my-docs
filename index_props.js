@@ -27,7 +27,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "",
     'cover': undefined,
@@ -60,5 +60,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "index.html", owner: "ViktorWong", repo: "my-docs", title: undefined })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "index.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: undefined })
 };

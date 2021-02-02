@@ -93,7 +93,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "css3新特性概览 1. css3选择器，与jq一样，强化了选择器功能，包括了数量、层次、属性选择器 2. 原先通过图片或者脚本实现视觉效果通过样式实现，减少了标签和脚本的使用，降低维护成本 3. 背景：支持背景大小，多背景设置，减...",
     'cover': "/css/linear.png",
@@ -142,5 +142,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/CSS3.html", owner: "ViktorWong", repo: "my-docs", title: "CSS3\u65B0\u7279\u6027" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/CSS3.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "CSS3\u65B0\u7279\u6027" })
 };

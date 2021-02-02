@@ -95,7 +95,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "移动端1px边框的问题 为了避免大家少走弯路，这里简单带一下网上提到的几种方案，包括下面的: - 边框的图片，border-image - 背景图片 - 边框的阴影 - 设置viewport的meta属性(不建议使用) 推荐方案： 1. transform 针对边框设...",
     'cover': undefined,
@@ -144,5 +144,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/Mobile.html", owner: "ViktorWong", repo: "my-docs", title: "\u79FB\u52A8\u7AEF\u5E38\u89C1\u95EE\u9898" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/Mobile.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u79FB\u52A8\u7AEF\u5E38\u89C1\u95EE\u9898" })
 };

@@ -63,7 +63,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "提炼函数 在 JavaScript 开发中，我们大部分时间都在与函数打交道，所以我们希望这些函数有着良好的命名，函数体内包含的逻辑清晰明了。如果一个函数过长，不得不加上若干注释才能让这个函数显得易读一些，那这些函数就很有必要...",
     'cover': undefined,
@@ -112,5 +112,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/Codeing.html", owner: "ViktorWong", repo: "my-docs", title: "\u4EE3\u7801\u91CD\u6784\u7ECF\u9A8C" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/Codeing.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u4EE3\u7801\u91CD\u6784\u7ECF\u9A8C" })
 };

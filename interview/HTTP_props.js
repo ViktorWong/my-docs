@@ -135,7 +135,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "UDP 面向报文 UDP 是一个面向报文（报文可以理解为一段段的数据）的协议。意思就是 UDP 只是报文的搬运工，不会对报文进行任何拆分和拼接操作。 具体来说 - 在发送端，应用层将数据传递给传输层的 UDP 协议，UDP 只会给数据增加...",
     'cover': "https://user-gold-cdn.xitu.io/2018/5/1/163195b245ceb89c?w=831&h=170&f=png&s=22793",
@@ -182,5 +182,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/HTTP.html", owner: "ViktorWong", repo: "my-docs", title: "\u7F51\u7EDC" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/HTTP.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u7F51\u7EDC" })
 };

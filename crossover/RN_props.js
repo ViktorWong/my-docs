@@ -39,7 +39,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "优势 - 跨平台 （只有 0.2% 的平台特定代码） - 统一的设计语言，同时还能为不同平台提供不同设计 - React 的 scale 很好。组件化，简单的生命周期,声明式 - 迭代速度快（主要是 hot reloading 很快） - 大量基础设施的投入值得...",
     'cover': undefined,
@@ -51,5 +51,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "crossover/RN.html", owner: "ViktorWong", repo: "my-docs", title: "React Native" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "crossover/RN.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "React Native" })
 };

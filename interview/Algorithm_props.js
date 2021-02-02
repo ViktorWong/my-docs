@@ -171,7 +171,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "排序 以下两个函数是排序中会用到的通用函数，就不一一写了 function checkArray(array) { if (array.length == 0) return array } function swap(array, left, right) { let rightValue = array[right] array[right] = array[...",
     'cover': "/sortGif/BubbleSort.gif",
@@ -218,5 +218,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/Algorithm.html", owner: "ViktorWong", repo: "my-docs", title: "\u7B97\u6CD5" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/Algorithm.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u7B97\u6CD5" })
 };

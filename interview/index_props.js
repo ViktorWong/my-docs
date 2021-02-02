@@ -242,7 +242,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "test MySQL 篇 Q1：主键 超键 候选键 外键是什么 定义 超键(super key): 在关系中能唯一标识元组的属性集称为关系模式的超键 候选键(candidate key): 不含有多余属性的超键称为候选键。也就是在候选键中，若再删除属性，就不是...",
     'cover': undefined,
@@ -289,5 +289,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/index.html", owner: "ViktorWong", repo: "my-docs", title: "00.\u6570\u636E\u5E93\u7BC7" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/index.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "00.\u6570\u636E\u5E93\u7BC7" })
 };

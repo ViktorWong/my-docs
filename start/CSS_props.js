@@ -167,7 +167,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "css代码规范 选择器 - 选择器命名 选择器命名，class命名时选择语义化的，不建议使用直接样式效果，比如.red,.fontBold，另外整体的样式文件中命名建议使用统一的规则，或者驼峰式，或者中划线分割，命名注意缩写，避免与id重名...",
     'cover': "/css/height_auto.png",
@@ -216,5 +216,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/CSS.html", owner: "ViktorWong", repo: "my-docs", title: "CSS \u5165\u95E8" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/CSS.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "CSS \u5165\u95E8" })
 };

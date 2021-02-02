@@ -102,7 +102,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "Q1：如何实现一个高效的单向链表逆序输出？ 出题人：阿里巴巴出题专家：昀龙／阿里云弹性人工智能负责人 参考答案：下面是其中一种写法，也可以有不同的写法，比如递归等。供参考。 typedef struct node{ int data; struct nod...",
     'cover': undefined,
@@ -149,5 +149,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/Alibaba.html", owner: "ViktorWong", repo: "my-docs", title: "01.\u963F\u91CC\u7BC7" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/Alibaba.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "01.\u963F\u91CC\u7BC7" })
 };

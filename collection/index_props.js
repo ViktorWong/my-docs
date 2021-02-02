@@ -89,7 +89,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "JavaScript 《ECMAScript 6 入门》 《how-javascript-works》 《前端工程师手册》 TypeScript 《TypeScript 入门教程》 《深入理解 TypeScript》 Node 《深入理解Node.js：核心思想与源码分析》 CSS 《You-need-to-know-css》 ...",
     'cover': undefined,
@@ -108,5 +108,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "collection/index.html", owner: "ViktorWong", repo: "my-docs", title: "\u56FE\u4E66\u8D44\u6599" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "collection/index.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u56FE\u4E66\u8D44\u6599" })
 };

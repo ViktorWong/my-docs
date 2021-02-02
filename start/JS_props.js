@@ -122,7 +122,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "作用域闭包 执行上下文 当执行 JS 代码时，会产生三种执行上下文 - 全局执行上下文 - 函数执行上下文 - eval 执行上下文 每个执行上下文中都有三个重要的属性 - 变量对象（VO），包含变量、函数声明和函数的形参，该属性只能在...",
     'cover': "https://user-gold-cdn.xitu.io/2018/12/24/167de3ac36bb9de7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1",
@@ -171,5 +171,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/JS.html", owner: "ViktorWong", repo: "my-docs", title: "\u6DF1\u5165 JavaScript" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/JS.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u6DF1\u5165 JavaScript" })
 };

@@ -74,5 +74,6 @@ export default {
         repo: "my-docs",
         owner: "ViktorWong",
         admin: ["ViktorWong"],
+        pagerDirection: 'first'
     },
 };

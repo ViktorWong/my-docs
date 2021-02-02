@@ -107,7 +107,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "网络相关 DNS 预解析 DNS 解析也是需要时间的，可以通过预解析的方式来预先获得域名所对应的 IP。 <link rel=\"dns-prefetch\" href=\"//yuchengkai.cn\"> 缓存 缓存对于前端性能优化来说是个很重要的点，良好的缓存策略可以降低资...",
     'cover': undefined,
@@ -156,5 +156,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/Performance.html", owner: "ViktorWong", repo: "my-docs", title: "\u6027\u80FD\u4F18\u5316" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "start/Performance.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u6027\u80FD\u4F18\u5316" })
 };

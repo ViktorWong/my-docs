@@ -105,7 +105,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T09:45:54.000Z",
+    'date': "2021-02-02T10:00:08.000Z",
     'updated': null,
     'excerpt': "数据结构 栈 概念 栈是一个线性结构，在计算机中是一个相当常见的数据结构。 栈的特点是只能在某一端添加或删除数据，遵循先进后出的原则 实现 每种数据结构都可以用很多种方式来实现，其实可以把栈看成是数组的一个子集，所以...",
     'cover': "https://user-gold-cdn.xitu.io/2018/5/20/1637b785d2d68735?w=640&h=460&f=png&s=6932",
@@ -152,5 +152,5 @@ export default {
     },
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
-        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/DataStructure.html", owner: "ViktorWong", repo: "my-docs", title: "\u6570\u636E\u7ED3\u6784" })
+        ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "interview/DataStructure.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "\u6570\u636E\u7ED3\u6784" })
 };
