@@ -80,31 +80,10 @@ export default {
     tocEnabled: true,
     tocLevel: [1, 2, 3, 4],
   },
-//   tocAd: (
-//     <div
-//       dangerouslySetInnerHTML={{
-//         __html: `
-// <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-// <!-- 192*128 -->
-// <ins
-//   class="adsbygoogle"
-//   style="display:inline-block;width:192px;height:128px"
-//   data-ad-client="ca-pub-8483371329009107"
-//   data-ad-slot="6487368873"
-// ></ins>
-// <script>
-//   (adsbygoogle = window.adsbygoogle || []).push({});
-// </script>`,
-//       }}
-//     />
-//   ),
   tools: {
     editOnGitHub: true,
     backToTop: true,
   },
-  // ga: {
-  //   id: "UA-45256157-14",
-  // },
   gitalk: {
     clientID: "0af8ad0c8674b58c37c0",
     clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859",
