@@ -93,7 +93,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:42:36.000Z",
+    'date': "2021-02-02T10:53:13.000Z",
     'updated': null,
     'excerpt': "移动端1px边框的问题 为了避免大家少走弯路，这里简单带一下网上提到的几种方案，包括下面的: - 边框的图片，border-image - 背景图片 - 边框的阴影 - 设置viewport的meta属性(不建议使用) 推荐方案： 1. transform 针对边框设...",
     'cover': undefined,

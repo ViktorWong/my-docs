@@ -240,7 +240,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:42:36.000Z",
+    'date': "2021-02-02T10:53:13.000Z",
     'updated': null,
     'excerpt': "test MySQL 篇 Q1：主键 超键 候选键 外键是什么 定义 超键(super key): 在关系中能唯一标识元组的属性集称为关系模式的超键 候选键(candidate key): 不含有多余属性的超键称为候选键。也就是在候选键中，若再删除属性，就不是...",
     'cover': undefined,

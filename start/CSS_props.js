@@ -165,7 +165,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:42:36.000Z",
+    'date': "2021-02-02T10:53:13.000Z",
     'updated': null,
     'excerpt': "css代码规范 选择器 - 选择器命名 选择器命名，class命名时选择语义化的，不建议使用直接样式效果，比如.red,.fontBold，另外整体的样式文件中命名建议使用统一的规则，或者驼峰式，或者中划线分割，命名注意缩写，避免与id重名...",
     'cover': "/css/height_auto.png",

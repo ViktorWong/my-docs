@@ -16,14 +16,6 @@ export default {
         { text: "修仙入门", link: "/start/index.html" },
         { text: "进阶功法", link: "/advanced/index.html" },
         { text: "跨界码王", link: "/crossover/RN.html" },
-        {
-            text: "投桃报李",
-            link: "http://www.itdongdong.com",
-            target: "_blank",
-            popover: (React.createElement(React.Fragment, null,
-                React.createElement("img", { src: "http://lib.itdongdong.com/weixin.png", width: "256", style: { marginRight: "1rem", verticalAlign: "top" } }),
-                React.createElement("img", { src: "http://lib.itdongdong.com/zhifubao.png", width: "256", style: { verticalAlign: "top" } }))),
-        },
     ],
     sidebar: {
         "/collection/": ["collection/README.md"],
@@ -57,7 +49,6 @@ export default {
             "start/Mobx.md",
         ],
         "/advanced/": ["advanced/README.md"],
-        "/": ["index.html"],
     },
     md: {
         anchorLevel: [1, 2, 3, 4, 5, 6],

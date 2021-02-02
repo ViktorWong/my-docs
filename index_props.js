@@ -2,8 +2,6 @@ import projectConfig from '/pagic.config.js';
 import IndexPage from './index_content.js';
 import Gitalk from '/_gitalk.js';
 export default {
-    'prev': undefined,
-    'next': undefined,
     config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "index.tsx",
     'layoutPath': "_layout.tsx",
@@ -78,14 +76,6 @@ export default {
                 {
                     link: '/crossover/RN.html',
                     text: '跨界码王'
-                },
-                {
-                    link: 'http://www.itdongdong.com',
-                    popover: React.createElement(React.Fragment, null,
-                        React.createElement("img", { src: "http://lib.itdongdong.com/weixin.png", style: { marginRight: '1rem', verticalAlign: 'top' }, width: "256" }),
-                        React.createElement("img", { src: "http://lib.itdongdong.com/zhifubao.png", style: { verticalAlign: 'top' }, width: "256" })),
-                    target: '_blank',
-                    text: '投桃报李'
                 }
             ],
             outDir: 'dist',
@@ -105,9 +95,6 @@ export default {
             root: '/',
             serve: false,
             sidebar: {
-                '/': [
-                    'index.html'
-                ],
                 '/advanced/': [
                     'advanced/README.md'
                 ],
@@ -158,7 +145,6 @@ export default {
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
         React.createElement("script", { src: "/index.js", type: "module" })),
-    'sidebar': [],
     'gitalk': React.createElement(Gitalk, { admin: [
             'ViktorWong'
         ], clientID: "0af8ad0c8674b58c37c0", clientSecret: "fe697a9667fc2b49387bf550e4178b3eaa5b8859", id: "index.html", owner: "ViktorWong", pagerDirection: "first", repo: "my-docs", title: "" })

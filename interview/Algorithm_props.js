@@ -169,7 +169,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:42:36.000Z",
+    'date': "2021-02-02T10:53:13.000Z",
     'updated': null,
     'excerpt': "排序 以下两个函数是排序中会用到的通用函数，就不一一写了 function checkArray(array) { if (array.length == 0) return array } function swap(array, left, right) { let rightValue = array[right] array[right] = array[...",
     'cover': "/sortGif/BubbleSort.gif",

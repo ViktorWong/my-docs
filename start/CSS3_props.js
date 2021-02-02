@@ -91,7 +91,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T10:42:36.000Z",
+    'date': "2021-02-02T10:53:13.000Z",
     'updated': null,
     'excerpt': "css3新特性概览 1. css3选择器，与jq一样，强化了选择器功能，包括了数量、层次、属性选择器 2. 原先通过图片或者脚本实现视觉效果通过样式实现，减少了标签和脚本的使用，降低维护成本 3. 背景：支持背景大小，多背景设置，减...",
     'cover': "/css/linear.png",
