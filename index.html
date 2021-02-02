@@ -1,4 +1,4 @@
-<!doctype html><html class="" data-reactroot=""><head><link rel="icon" type="image/png" href="/favicon.png"/><script src="/assets/custom.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+<!doctype html><html class="" data-reactroot=""><head><link rel="icon" type="image/png" href="/favicon.png"/>
 <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="我的图书馆"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
 <title data-react-helmet="true">ViktorHub</title>
 <link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
@@ -9,4 +9,69 @@
       document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
     }
   </script>
-</head><body><header><h1 class="hide_on_mobile"><a href="/">ViktorHub</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">ViktorHub</a></h1></li><li class="hide_on_mobile"><a href="/collection/index.html">秘籍收藏</a></li><li class="hide_on_mobile"><a href="/interview/index.html">面霸心经</a></li><li class="hide_on_mobile"><a href="/start/index.html">修仙入门</a></li><li class="hide_on_mobile"><a href="/advanced/index.html">进阶功法</a></li><li class="hide_on_mobile"><a href="/crossover/RN.html">跨界码王</a></li><li class="hide_on_mobile"><a href="http://www.itdongdong.com" target="_blank">投桃报李</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/ViktorWong/my-docs" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><section class="main"><div class="main_article"><article></article><div id="gitalk-container"></div><link id="gitalk-css" rel="preload" href="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.css" as="style"/><script defer="" src="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.min.js"></script></div></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-pen button" href="https://github.com/ViktorWong/my-docs/edit/master/docs/README.md" target="_blank" style="background-image:url(&quot;/assets/czs-pen.svg&quot;)"></a><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
+</head><body><header><h1 class="hide_on_mobile"><a href="/">ViktorHub</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">ViktorHub</a></h1></li><li class="hide_on_mobile"><a href="/collection/index.html">秘籍收藏</a></li><li class="hide_on_mobile"><a href="/interview/index.html">面霸心经</a></li><li class="hide_on_mobile"><a href="/start/index.html">修仙入门</a></li><li class="hide_on_mobile"><a href="/advanced/index.html">进阶功法</a></li><li class="hide_on_mobile"><a href="/crossover/RN.html">跨界码王</a></li><li class="hide_on_mobile"><a href="http://www.itdongdong.com" target="_blank">投桃报李</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/ViktorWong/my-docs" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"></ol></aside><section class="main"><div class="main_article"><div><style>
+h2 {
+  font-weight: normal;
+}
+.main_article {
+  width: 960px;
+  max-width: 960px;
+  padding-bottom: 0;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  margin: 3rem -1rem 0 -1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+.cards > div {
+  width: 20rem;
+  padding: 0 1rem;
+}
+.cards ul {
+  color: var(--color-text-muted);
+}
+.btn {
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.9;
+  font-size: 14px;
+  text-decoration: none;
+  background-color: var(--color-border);
+  color: var(--color-text);
+}
+.btn:hover {
+  text-decoration: none;
+}
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+.btn:hover {
+  opacity: 1;
+}
+@media screen and (max-width: 44rem) {
+  h2 {
+    text-align: center;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .cards > div {
+    width: 100vw;
+  }
+  .cards ul {
+    text-align: center;
+    padding-left: 0;
+    list-style: none;
+  }
+  pre {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+}
+</style><h1 style="margin-top:3.5rem;text-align:center;font-size:64px;color:hsl(210, 70%, 50%)">Viktor&#x27;s Docs</h1><p style="font-size:28px;margin-top:2rem;text-align:center;color:var(--color-text-muted)">建设Web全栈数字图书馆，揭秘Web全栈架构师，打造个人核心竞争力</p><div style="display:flex;justify-content:center;margin-top:2rem"><a class="btn btn-primary" href="/start/">开始阅读</a><a class="btn" target="_blank" href="https://github.com/ViktorWong/my-docs">源码仓库</a></div></div><div class="cards"><div><h2>原创文章</h2><ul><li>融合了笔者的大量思考。</li><li>本书、笔者和读者一起成长。</li><li>友好的交流环境。</li></ul></div><div><h2>内容丰富</h2><ul><li>从多方位建设 <code>Web</code> 生态。</li><li>内容包括但不局限于 <code>Deno</code> <code>Node</code> <code>React</code> <code>Vue</code> 等众多技术要点。</li><li>收录各种翻译文章、授权转载文章。</li></ul></div><div><h2>长期维护</h2><ul><li>来源于一份对持续深入地掌握前沿技术的渴望。</li><li>基于 <code>Pagic</code> 静态网站生成器，构建长期的网站技术支持。</li><li>野心，不止于此。</li></ul></div></div><h2>推荐你的 Web 文章？快来一起建设吧</h2><pre style="font-size:1rem"><code># 直接在 issues 区里推荐
+https://github.com/ViktorWong/my-docs/issues</code></pre><div id="gitalk-container"></div><link id="gitalk-css" rel="preload" href="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.css" as="style"/><script defer="" src="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.min.js"></script></div></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-pen button" href="https://github.com/ViktorWong/my-docs/edit/master/docs/index.tsx" target="_blank" style="background-image:url(&quot;/assets/czs-pen.svg&quot;)"></a><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

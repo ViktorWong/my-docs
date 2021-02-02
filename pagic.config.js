@@ -4,13 +4,12 @@ export default {
     root: "/",
     theme: "docs",
     includes: ["assets"],
-    plugins: ["sidebar", "prev_next", "ga", "gitalk", "blog", "i18n"],
+    plugins: ["sidebar", "prev_next", "gitalk"],
     github: "https://github.com/ViktorWong/my-docs",
     title: "ViktorHub",
+    branth: "master",
     description: "我的图书馆",
-    head: (React.createElement(React.Fragment, null,
-        React.createElement("link", { rel: "icon", type: "image/png", href: "/favicon.png" }),
-        React.createElement("script", { src: "/assets/custom.js" }))),
+    head: React.createElement("link", { rel: "icon", type: "image/png", href: "/favicon.png" }),
     nav: [
         { text: "秘籍收藏", link: "/collection/index.html" },
         { text: "面霸心经", link: "/interview/index.html" },
@@ -41,7 +40,7 @@ export default {
                 ],
             },
         ],
-        crossover: [
+        "/crossover/": [
             {
                 link: "crossover/RN.md",
                 title: "ReactNative",
@@ -58,6 +57,7 @@ export default {
             "start/Mobx.md",
         ],
         "/advanced/": ["advanced/README.md"],
+        "/": ["index.html"],
     },
     md: {
         anchorLevel: [1, 2, 3, 4, 5, 6],
@@ -74,6 +74,6 @@ export default {
         repo: "my-docs",
         owner: "ViktorWong",
         admin: ["ViktorWong"],
-        pagerDirection: 'first'
+        pagerDirection: "first",
     },
 };
