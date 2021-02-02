@@ -69,4 +69,21 @@ export default {
     admin: ["ViktorWong"],
     pagerDirection: "first",
   },
+  tocAd: (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `
+        <script data-ad-client="ca-pub-5052023368276507" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 192*128 -->
+<ins
+  class="adsbygoogle"
+  style="display:inline-block;width:192px;height:128px"
+  data-ad-client="ca-pub-5052023368276507"
+></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`,
+      }}
+    />
+  ),
 };
