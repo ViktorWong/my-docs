@@ -5,13 +5,21 @@ export default {
   // outDir: "public", // 输出目录
   root: "/",
   theme: "docs",
-  includes: ["assets"],
   plugins: ["sidebar", "prev_next", "gitalk"],
   github: "https://github.com/ViktorWong/my-docs",
   title: "Viktor‘s Docs",
   branth: "master",
   description: "我的图书馆",
-  head: <link rel="icon" type="image/png" href="/favicon.png" />,
+  head: (
+    <>
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      <script
+        data-ad-client="ca-pub-5052023368276507"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      ></script>
+    </>
+  ),
   nav: [
     { text: "秘籍收藏", link: "/collection/index.html" },
     { text: "面霸心经", link: "/interview/index.html" },
@@ -21,12 +29,12 @@ export default {
   ],
   sidebar: {
     "/collection/": [
-    {
-      link: "collection/README.md",
-      title: "秘籍收藏",
-      children: []
-    }
-  ],
+      {
+        link: "collection/README.md",
+        title: "秘籍收藏",
+        children: [],
+      },
+    ],
     "/interview/": [
       {
         link: "interview/README.md",
@@ -44,9 +52,7 @@ export default {
       {
         link: "crossover/README.md",
         title: "ReactNative",
-        children: [
-          "crossover/RN.md",
-        ],
+        children: ["crossover/RN.md"],
       },
     ],
     "/start/": [
@@ -61,15 +67,15 @@ export default {
           "start/Performance.md",
           "start/Codeing.md",
           "start/Mobx.md",
-        ]
-      }
+        ],
+      },
     ],
     "/advanced/": [
       {
         link: "advanced/README.md",
         title: "进阶功法",
-        children: []
-      }
+        children: [],
+      },
     ],
   },
   md: {
@@ -89,21 +95,4 @@ export default {
     admin: ["ViktorWong"],
     pagerDirection: "first",
   },
-  tocAd: (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `
-        <script data-ad-client="ca-pub-5052023368276507" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 192*128 -->
-<ins
-  class="adsbygoogle"
-  style="display:inline-block;width:192px;height:128px"
-  data-ad-client="ca-pub-5052023368276507"
-></ins>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>`,
-      }}
-    />
-  ),
 };
