@@ -70,7 +70,6 @@ export default {
       "start/Mobx.md",
     ],
     "/advanced/": ["advanced/README.md"],
-    "/": ["index.html"],
   },
   md: {
     anchorLevel: [1, 2, 3, 4, 5, 6],
