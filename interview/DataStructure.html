@@ -1,0 +1,807 @@
+<!doctype html><html class="" data-reactroot=""><head><link rel="icon" type="image/png" href="/favicon.png"/><script src="/assets/custom.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="我的图书馆"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">数据结构 · ViktorHub</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/">ViktorHub</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">ViktorHub</a></h1></li><li class="hide_on_mobile"><a href="/collection/index.html">秘籍收藏</a></li><li class="hide_on_mobile"><a href="/interview/index.html">面霸心经</a></li><li class="hide_on_mobile"><a href="/start/index.html">修仙入门</a></li><li class="hide_on_mobile"><a href="/advanced/index.html">进阶功法</a></li><li class="hide_on_mobile"><a href="/crossover/RN.html">跨界码王</a></li><li class="hide_on_mobile"><a href="http://www.itdongdong.com" target="_blank">投桃报李</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/ViktorWong/my-docs" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class="unfold"><a href="/interview/index.html" class="nav_link">00.数据库篇<span class="czs-angle-up-l" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></span><span class="czs-angle-down-l" style="background-image:url(&quot;/assets/czs-angle-down-l.svg&quot;)"></span></a><ol class="list_style_none" style="height:auto"><li class=""><a href="/interview/index.html" class="nav_link">00.数据库篇</a></li><li class=""><a href="/interview/Alibaba.html" class="nav_link">01.阿里篇</a></li><li class=""><a href="/interview/HTTP.html" class="nav_link">网络</a></li><li class=""><a href="/interview/DataStructure.html" class="nav_link active">数据结构</a></li><li class=""><a href="/interview/Algorithm.html" class="nav_link">算法</a></li></ol></li></ol></aside><section class="main"><div class="main_article"><article><!--
+Author: Viktor (victor318x@gmail.com)
+DataStructure.md (c) 2021
+Desc: description
+Created:  2021/2/2 下午4:36:19
+Modified: 2021/2/2 下午4:36:28
+-->
+<h1 id="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构<a class="anchor" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">§</a></h1>
+<h2 id="%E6%A0%88">栈<a class="anchor" href="#%E6%A0%88">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5">§</a></h3>
+<p>栈是一个线性结构，在计算机中是一个相当常见的数据结构。</p>
+<p>栈的特点是只能在某一端添加或删除数据，遵循先进后出的原则</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/20/1637b785d2d68735?w=640&amp;h=460&amp;f=png&amp;s=6932" alt=""></p>
+<h3 id="%E5%AE%9E%E7%8E%B0">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0">§</a></h3>
+<p>每种数据结构都可以用很多种方式来实现，其实可以把栈看成是数组的一个子集，所以这里使用数组来实现</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Stack</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">stack</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">push</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">stack</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">stack</span><span class="token punctuation">.</span><span class="token method function property-access">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">stack</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">stack</span><span class="token punctuation">.</span><span class="token property-access">length</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="%E5%BA%94%E7%94%A8">应用<a class="anchor" href="#%E5%BA%94%E7%94%A8">§</a></h3>
+<p>选取了 <a href="https://leetcode.com/problems/valid-parentheses/submissions/1">LeetCode 上序号为 20 的题目</a></p>
+<p>题意是匹配括号，可以通过栈的特性来完成这道题目</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">isValid</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> map <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'('</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">')'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">'['</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string">']'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string">'{'</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token string">'}'</span><span class="token operator">:</span> <span class="token number">3</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">let</span> stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      stack<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> last <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token method function property-access">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">[</span>last<span class="token punctuation">]</span> <span class="token operator">+</span> map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token boolean">false</span>
+  <span class="token keyword control-flow">return</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="%E9%98%9F%E5%88%97">队列<a class="anchor" href="#%E9%98%9F%E5%88%97">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5-1">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5-1">§</a></h3>
+<p>队列一个线性结构，特点是在某一端添加数据，在另一端删除数据，遵循先进先出的原则。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/20/1637cba2a6155793?w=640&amp;h=419&amp;f=png&amp;s=15737" alt=""></p>
+<h3 id="%E5%AE%9E%E7%8E%B0-1">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0-1">§</a></h3>
+<p>这里会讲解两种实现队列的方式，分别是单链队列和循环队列。</p>
+<h4 id="%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97">单链队列<a class="anchor" href="#%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97">§</a></h4>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Queue</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">enQueue</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">deQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token method function property-access">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token property-access">length</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>因为单链队列在出队操作的时候需要 O(n) 的时间复杂度，所以引入了循环队列。循环队列的出队操作平均是 O(1) 的时间复杂度。</p>
+<h3 id="%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97">循环队列<a class="anchor" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97">§</a></h3>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">SqQueue</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token comment">// 队头</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment">// 队尾</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment">// 当前队列大小</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">enQueue</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 判断队尾 + 1 是否为队头</span>
+    <span class="token comment">// 如果是就代表需要扩容数组</span>
+    <span class="token comment">// % this.queue.length 是为了防止数组越界</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span> <span class="token operator">===</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span><span class="token punctuation">]</span> <span class="token operator">=</span> item
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">++</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token property-access">length</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">deQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">throw</span> <span class="token known-class-name class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Queue is empty'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">let</span> r <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span><span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token property-access">length</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">--</span>
+    <span class="token comment">// 判断当前队列大小是否过小</span>
+    <span class="token comment">// 为了保证不浪费空间，在队列空间等于总长度四分之一时</span>
+    <span class="token comment">// 且不为 2 时缩小总长度为当前的一半</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">4</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> r
+  <span class="token punctuation">}</span>
+  <span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">throw</span> <span class="token known-class-name class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Queue is empty'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span> <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">resize</span><span class="token punctuation">(</span><span class="token parameter">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      q<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span><span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">queue</span> <span class="token operator">=</span> q
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">first</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">last</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="%E9%93%BE%E8%A1%A8">链表<a class="anchor" href="#%E9%93%BE%E8%A1%A8">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5-2">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5-2">§</a></h3>
+<p>链表是一个线性结构，同时也是一个天然的递归结构。链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/22/16388487759b1152?w=1060&amp;h=178&amp;f=png&amp;s=20820" alt=""></p>
+<h3 id="%E5%AE%9E%E7%8E%B0-2">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0-2">§</a></h3>
+<p>单向链表</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> v
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> next
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">LinkList</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 链表长度</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment">// 虚拟头部</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">dummyNode</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">,</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">header<span class="token punctuation">,</span> index<span class="token punctuation">,</span> currentIndex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>index <span class="token operator">===</span> currentIndex<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> header
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span>header<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">,</span> index<span class="token punctuation">,</span> currentIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">addNode</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">checkIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+    <span class="token comment">// 当往链表末尾插入时，prev.next 为空</span>
+    <span class="token comment">// 其他情况时，因为要插入节点，所以插入的节点</span>
+    <span class="token comment">// 的 next 应该是 prev.next</span>
+    <span class="token comment">// 然后设置 prev.next 为插入的节点</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">dummyNode</span><span class="token punctuation">,</span> index<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    prev<span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> prev<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">++</span>
+    <span class="token keyword control-flow">return</span> prev<span class="token punctuation">.</span><span class="token property-access">next</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">insertNode</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">addNode</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> index<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">addToFirst</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">addNode</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">addToLast</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">addNode</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">removeNode</span><span class="token punctuation">(</span><span class="token parameter">index<span class="token punctuation">,</span> isLast</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">checkIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+    index <span class="token operator">=</span> isLast <span class="token operator">?</span> index <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">:</span> index
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">dummyNode</span><span class="token punctuation">,</span> index<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> node <span class="token operator">=</span> prev<span class="token punctuation">.</span><span class="token property-access">next</span>
+    prev<span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">next</span>
+    node<span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">--</span>
+    <span class="token keyword control-flow">return</span> node
+  <span class="token punctuation">}</span>
+  <span class="token function">removeFirstNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">removeNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">removeLastNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">removeNode</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">checkIndex</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> index <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token punctuation">)</span> <span class="token keyword control-flow">throw</span> <span class="token known-class-name class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Index error'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getNode</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">checkIndex</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">dummyNode</span><span class="token punctuation">,</span> index<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">next</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">===</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="%E6%A0%91">树<a class="anchor" href="#%E6%A0%91">§</a></h2>
+<h3 id="%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树<a class="anchor" href="#%E4%BA%8C%E5%8F%89%E6%A0%91">§</a></h3>
+<p>树拥有很多种结构，二叉树是树中最常用的结构，同时也是一个天然的递归结构。</p>
+<p>二叉树拥有一个根节点，每个节点至多拥有两个子节点，分别为：左节点和右节点。树的最底部节点称之为叶节点，当一颗树的叶数量数量为满时，该树可以称之为满二叉树。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/22/163884f74c9f4e4d?w=320&amp;h=267&amp;f=png&amp;s=11622" alt=""></p>
+<h3 id="%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%A0%91">二分搜索树<a class="anchor" href="#%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%A0%91">§</a></h3>
+<p>二分搜索树也是二叉树，拥有二叉树的特性。但是区别在于二分搜索树每个节点的值都比他的左子树的值大，比右子树的值小。</p>
+<p>这种存储方式很适合于数据搜索。如下图所示，当需要查找 6 的时候，因为需要查找的值比根节点的值大，所以只需要在根节点的右子树上寻找，大大提高了搜索效率。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/22/1638850ba7458208?w=596&amp;h=485&amp;f=png&amp;s=36796" alt=""></p>
+<h4 id="%E5%AE%9E%E7%8E%B0-3">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0-3">§</a></h4>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> value
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">BST</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">===</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">addNode</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 添加节点时，需要比较添加的节点值和当前</span>
+  <span class="token comment">// 节点值的大小</span>
+  <span class="token function">_addChild</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">++</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">></span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> node
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>以上是最基本的二分搜索树实现，接下来实现树的遍历。</p>
+<p>对于树的遍历来说，有三种遍历方法，分别是先序遍历、中序遍历、后序遍历。三种遍历的区别在于何时访问节点。在遍历树的过程中，每个节点都会遍历三次，分别是遍历到自己，遍历左子树和遍历右子树。如果需要实现先序遍历，那么只需要第一次遍历到节点时进行操作即可。</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// 先序遍历可用于打印树的结构</span>
+<span class="token comment">// 先序遍历先访问根节点，然后访问左节点，最后访问右节点。</span>
+<span class="token function">preTraversal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_pre</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">_pre</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_pre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_pre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 中序遍历可用于排序</span>
+<span class="token comment">// 对于 BST 来说，中序遍历可以实现一次遍历就</span>
+<span class="token comment">// 得到有序的值</span>
+<span class="token comment">// 中序遍历表示先访问左节点，然后访问根节点，最后访问右节点。</span>
+<span class="token function">midTraversal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_mid</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">_mid</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_mid</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_mid</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 后序遍历可用于先操作子节点</span>
+<span class="token comment">// 再操作父节点的场景</span>
+<span class="token comment">// 后序遍历表示先访问左节点，然后访问右节点，最后访问根节点。</span>
+<span class="token function">backTraversal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_back</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">_back</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_back</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_back</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>以上的这几种遍历都可以称之为深度遍历，对应的还有种遍历叫做广度遍历，也就是一层层地遍历树。对于广度遍历来说，我们需要利用之前讲过的队列结构来完成。</p>
+<pre class="language-js"><code class="language-js"><span class="token function">breadthTraversal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span>
+  <span class="token keyword">let</span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 将根节点入队</span>
+  q<span class="token punctuation">.</span><span class="token method function property-access">enQueue</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span>
+  <span class="token comment">// 循环判断队列是否为空，为空</span>
+  <span class="token comment">// 代表树遍历完毕</span>
+  <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token method function property-access">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 将队首出队，判断是否有左右子树</span>
+    <span class="token comment">// 有的话，就先左后右入队</span>
+    <span class="token keyword">let</span> n <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token method function property-access">deQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>n<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>n<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token method function property-access">enQueue</span><span class="token punctuation">(</span>n<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>n<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token method function property-access">enQueue</span><span class="token punctuation">(</span>n<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>接下来先介绍如何在树中寻找最小值或最大数。因为二分搜索树的特性，所以最小值一定在根节点的最左边，最大值相反</p>
+<pre class="language-js"><code class="language-js"><span class="token function">getMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getMin</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">value</span>
+<span class="token punctuation">}</span>
+<span class="token function">_getMin</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> node
+  <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getMin</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">getMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getMax</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">value</span>
+<span class="token punctuation">}</span>
+<span class="token function">_getMax</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> node
+  <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getMin</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>向上取整和向下取整</strong>，这两个操作是相反的，所以代码也是类似的，这里只介绍如何向下取整。既然是向下取整，那么根据二分搜索树的特性，值一定在根节点的左侧。只需要一直遍历左子树直到当前节点的值不再大于等于需要的值，然后判断节点是否还拥有右子树。如果有的话，继续上面的递归判断。</p>
+<pre class="language-js"><code class="language-js"><span class="token function">floor</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_floor</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token keyword control-flow">return</span> node <span class="token operator">?</span> node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">:</span> <span class="token keyword null nil">null</span>
+<span class="token punctuation">}</span>
+<span class="token function">_floor</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">===</span> v<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> v
+  <span class="token comment">// 如果当前节点值还比需要的值大，就继续递归</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">></span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_floor</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 判断当前节点是否拥有右子树</span>
+  <span class="token keyword">let</span> right <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_floor</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> right
+  <span class="token keyword control-flow">return</span> node
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>排名</strong>，这是用于获取给定值的排名或者排名第几的节点的值，这两个操作也是相反的，所以这个只介绍如何获取排名第几的节点的值。对于这个操作而言，我们需要略微的改造点代码，让每个节点拥有一个 <code>size</code> 属性。该属性表示该节点下有多少子节点（包含自身）。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> value
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token comment">// 修改代码</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">=</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 新增代码</span>
+<span class="token function">_getSize</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> node <span class="token operator">?</span> node<span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+<span class="token function">_addChild</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">></span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 修改代码</span>
+    node<span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">++</span>
+    node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 修改代码</span>
+    node<span class="token punctuation">.</span><span class="token property-access">size</span><span class="token operator">++</span>
+    node<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword control-flow">return</span> node
+<span class="token punctuation">}</span>
+<span class="token function">select</span><span class="token punctuation">(</span><span class="token parameter">k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_select</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span>
+  <span class="token keyword control-flow">return</span> node <span class="token operator">?</span> node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">:</span> <span class="token keyword null nil">null</span>
+<span class="token punctuation">}</span>
+<span class="token function">_select</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span>
+  <span class="token comment">// 先获取左子树下有几个节点</span>
+  <span class="token keyword">let</span> size <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">?</span> node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token comment">// 判断 size 是否大于 k</span>
+  <span class="token comment">// 如果大于 k，代表所需要的节点在左节点</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>size <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_select</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span>
+  <span class="token comment">// 如果小于 k，代表所需要的节点在右节点</span>
+  <span class="token comment">// 注意这里需要重新计算 k，减去根节点除了右子树的节点数量</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>size <span class="token operator">&lt;</span> k<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_select</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">,</span> k <span class="token operator">-</span> size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token keyword control-flow">return</span> node
+<span class="token punctuation">}</span>
+</code></pre>
+<p>接下来讲解的是二分搜索树中最难实现的部分：删除节点。因为对于删除节点来说，会存在以下几种情况</p>
+<ul>
+<li>需要删除的节点没有子树</li>
+<li>需要删除的节点只有一条子树</li>
+<li>需要删除的节点有左右两条树</li>
+</ul>
+<p>对于前两种情况很好解决，但是第三种情况就有难度了，所以先来实现相对简单的操作：删除最小节点，对于删除最小节点来说，是不存在第三种情况的，删除最大节点操作是和删除最小节点相反的，所以这里也就不再赘述。</p>
+<pre class="language-js"><code class="language-js"><span class="token function">delectMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_delectMin</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span>
+  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">_delectMin</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 一直递归左子树</span>
+  <span class="token comment">// 如果左子树为空，就判断节点是否拥有右子树</span>
+  <span class="token comment">// 有右子树的话就把需要删除的节点替换为右子树</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>node <span class="token operator">!=</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> node<span class="token punctuation">.</span><span class="token property-access">right</span>
+  node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_delectMin</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+  <span class="token comment">// 最后需要重新维护下节点的 `size`</span>
+  node<span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getSize</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getSize</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+  <span class="token keyword control-flow">return</span> node
+<span class="token punctuation">}</span>
+</code></pre>
+<p>最后讲解的就是如何删除任意节点了。对于这个操作，T.Hibbard 在 1962 年提出了解决这个难题的办法，也就是如何解决第三种情况。</p>
+<p>当遇到这种情况时，需要取出当前节点的后继节点（也就是当前节点右子树的最小节点）来替换需要删除的节点。然后将需要删除节点的左子树赋值给后继结点，右子树删除后继结点后赋值给他。</p>
+<p>你如果对于这个解决办法有疑问的话，可以这样考虑。因为二分搜索树的特性，父节点一定比所有左子节点大，比所有右子节点小。那么当需要删除父节点时，势必需要拿出一个比父节点大的节点来替换父节点。这个节点肯定不存在于左子树，必然存在于右子树。然后又需要保持父节点都是比右子节点小的，那么就可以取出右子树中最小的那个节点来替换父节点。</p>
+<pre class="language-js"><code class="language-js"><span class="token function">delect</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_delect</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">_delect</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token keyword null nil">null</span>
+  <span class="token comment">// 寻找的节点比当前节点小，去左子树找</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    node<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_delect</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">></span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 寻找的节点比当前节点大，去右子树找</span>
+    node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_delect</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 进入这个条件说明已经找到节点</span>
+    <span class="token comment">// 先判断节点是否拥有拥有左右子树中的一个</span>
+    <span class="token comment">// 是的话，将子树返回出去，这里和 `_delectMin` 的操作一样</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> node<span class="token punctuation">.</span><span class="token property-access">right</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> node<span class="token punctuation">.</span><span class="token property-access">left</span>
+    <span class="token comment">// 进入这里，代表节点拥有左右子树</span>
+    <span class="token comment">// 先取出当前节点的后继结点，也就是取当前节点右子树的最小值</span>
+    <span class="token keyword">let</span> min <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getMin</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+    <span class="token comment">// 取出最小值后，删除最小值</span>
+    <span class="token comment">// 然后把删除节点后的子树赋值给最小值节点</span>
+    min<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_delectMin</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+    <span class="token comment">// 左子树不动</span>
+    min<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">left</span>
+    node <span class="token operator">=</span> min
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 维护 size</span>
+  node<span class="token punctuation">.</span><span class="token property-access">size</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getSize</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getSize</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+  <span class="token keyword control-flow">return</span> node
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="avl-%E6%A0%91">AVL 树<a class="anchor" href="#avl-%E6%A0%91">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5-3">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5-3">§</a></h3>
+<p>二分搜索树实际在业务中是受到限制的，因为并不是严格的 O(logN)，在极端情况下会退化成链表，比如加入一组升序的数字就会造成这种情况。</p>
+<p>AVL 树改进了二分搜索树，在 AVL 树中任意节点的左右子树的高度差都不大于 1，这样保证了时间复杂度是严格的 O(logN)。基于此，对 AVL 树增加或删除节点时可能需要旋转树来达到高度的平衡。</p>
+<h3 id="%E5%AE%9E%E7%8E%B0-4">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0-4">§</a></h3>
+<p>因为 AVL 树是改进了二分搜索树，所以部分代码是于二分搜索树重复的，对于重复内容不作再次解析。</p>
+<p>对于 AVL 树来说，添加节点会有四种情况</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642cc145a0cfb26?w=800&amp;h=566&amp;f=png&amp;s=73573" alt=""></p>
+<p>对于左左情况来说，新增加的节点位于节点 2 的左侧，这时树已经不平衡，需要旋转。因为搜索树的特性，节点比左节点大，比右节点小，所以旋转以后也要实现这个特性。</p>
+<p>旋转之前：new &lt; 2 &lt; C &lt; 3 &lt; B &lt; 5 &lt; A，右旋之后节点 3 为根节点，这时候需要将节点 3 的右节点加到节点 5 的左边，最后还需要更新节点的高度。</p>
+<p>对于右右情况来说，相反于左左情况，所以不再赘述。</p>
+<p>对于左右情况来说，新增加的节点位于节点 4 的右侧。对于这种情况，需要通过两次旋转来达到目的。</p>
+<p>首先对节点的左节点左旋，这时树满足左左的情况，再对节点进行一次右旋就可以达到目的。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> value
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">height</span> <span class="token operator">=</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AVL</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">addNode</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">_addChild</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">></span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_addChild</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> v
+    <span class="token punctuation">}</span>
+    node<span class="token punctuation">.</span><span class="token property-access">height</span> <span class="token operator">=</span>
+      <span class="token number">1</span> <span class="token operator">+</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">max</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> factor <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getBalanceFactor</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+    <span class="token comment">// 当需要右旋时，根节点的左树一定比右树高度高</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>factor <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getBalanceFactor</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_rightRotate</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 当需要左旋时，根节点的左树一定比右树高度矮</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>factor <span class="token operator">&lt;</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getBalanceFactor</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_leftRotate</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 左右情况</span>
+    <span class="token comment">// 节点的左树比右树高，且节点的左树的右树比节点的左树的左树高</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>factor <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getBalanceFactor</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_leftRotate</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_rightRotate</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 右左情况</span>
+    <span class="token comment">// 节点的左树比右树矮，且节点的右树的右树比节点的右树的左树矮</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>factor <span class="token operator">&lt;</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getBalanceFactor</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      node<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_rightRotate</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_leftRotate</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword control-flow">return</span> node
+  <span class="token punctuation">}</span>
+  <span class="token function">_getHeight</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token number">0</span>
+    <span class="token keyword control-flow">return</span> node<span class="token punctuation">.</span><span class="token property-access">height</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">_getBalanceFactor</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 节点右旋</span>
+  <span class="token comment">//           5                    2</span>
+  <span class="token comment">//         /   \                /   \</span>
+  <span class="token comment">//        2     6   ==>       1      5</span>
+  <span class="token comment">//       /  \               /       /  \</span>
+  <span class="token comment">//      1    3             new     3    6</span>
+  <span class="token comment">//     /</span>
+  <span class="token comment">//    new</span>
+  <span class="token function">_rightRotate</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 旋转后新根节点</span>
+    <span class="token keyword">let</span> newRoot <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">left</span>
+    <span class="token comment">// 需要移动的节点</span>
+    <span class="token keyword">let</span> moveNode <span class="token operator">=</span> newRoot<span class="token punctuation">.</span><span class="token property-access">right</span>
+    <span class="token comment">// 节点 2 的右节点改为节点 5</span>
+    newRoot<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> node
+    <span class="token comment">// 节点 5 左节点改为节点 3</span>
+    node<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> moveNode
+    <span class="token comment">// 更新树的高度</span>
+    node<span class="token punctuation">.</span><span class="token property-access">height</span> <span class="token operator">=</span>
+      <span class="token number">1</span> <span class="token operator">+</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">max</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    newRoot<span class="token punctuation">.</span><span class="token property-access">height</span> <span class="token operator">=</span>
+      <span class="token number">1</span> <span class="token operator">+</span>
+      <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">max</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>newRoot<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>newRoot<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword control-flow">return</span> newRoot
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 节点左旋</span>
+  <span class="token comment">//           4                    6</span>
+  <span class="token comment">//         /   \                /   \</span>
+  <span class="token comment">//        2     6   ==>       4      7</span>
+  <span class="token comment">//             /  \         /   \      \</span>
+  <span class="token comment">//            5     7      2     5      new</span>
+  <span class="token comment">//                   \</span>
+  <span class="token comment">//                    new</span>
+  <span class="token function">_leftRotate</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 旋转后新根节点</span>
+    <span class="token keyword">let</span> newRoot <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">right</span>
+    <span class="token comment">// 需要移动的节点</span>
+    <span class="token keyword">let</span> moveNode <span class="token operator">=</span> newRoot<span class="token punctuation">.</span><span class="token property-access">left</span>
+    <span class="token comment">// 节点 6 的左节点改为节点 4</span>
+    newRoot<span class="token punctuation">.</span><span class="token property-access">left</span> <span class="token operator">=</span> node
+    <span class="token comment">// 节点 4 右节点改为节点 5</span>
+    node<span class="token punctuation">.</span><span class="token property-access">right</span> <span class="token operator">=</span> moveNode
+    <span class="token comment">// 更新树的高度</span>
+    node<span class="token punctuation">.</span><span class="token property-access">height</span> <span class="token operator">=</span>
+      <span class="token number">1</span> <span class="token operator">+</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">max</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    newRoot<span class="token punctuation">.</span><span class="token property-access">height</span> <span class="token operator">=</span>
+      <span class="token number">1</span> <span class="token operator">+</span>
+      <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">max</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>newRoot<span class="token punctuation">.</span><span class="token property-access">left</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_getHeight</span><span class="token punctuation">(</span>newRoot<span class="token punctuation">.</span><span class="token property-access">right</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword control-flow">return</span> newRoot
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="trie">Trie<a class="anchor" href="#trie">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5-4">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5-4">§</a></h3>
+<p>在计算机科学，<strong>trie</strong>，又称<strong>前缀树</strong>或<strong>字典树</strong>，是一种有序树，用于保存关联数组，其中的键通常是字符串。</p>
+<p>简单点来说，这个结构的作用大多是为了方便搜索字符串，该树有以下几个特点</p>
+<ul>
+<li>根节点代表空字符串，每个节点都有 N（假如搜索英文字符，就有 26 条） 条链接，每条链接代表一个字符</li>
+<li>节点不存储字符，只有路径才存储，这点和其他的树结构不同</li>
+<li>从根节点开始到任意一个节点，将沿途经过的字符连接起来就是该节点对应的字符串</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e1d2f6cec3348?w=640&amp;h=600&amp;f=png&amp;s=48344" alt="">、</p>
+<h3 id="%E5%AE%9E%E7%8E%B0-5">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0-5">§</a></h3>
+<p>总得来说 Trie 的实现相比别的树结构来说简单的很多，实现就以搜索英文字符为例。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">TrieNode</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 代表每个字符经过节点的次数</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">path</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment">// 代表到该节点的字符串有几个</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">end</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment">// 链接</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">next</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">fill</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Trie</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 根节点，代表空字符</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 插入字符串</span>
+  <span class="token function">insert</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>str<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span>
+    <span class="token keyword">let</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 获得字符先对应的索引</span>
+      <span class="token keyword">let</span> index <span class="token operator">=</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">charCodeAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token string">'a'</span><span class="token punctuation">.</span><span class="token method function property-access">charCodeAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">// 如果索引对应没有值，就创建</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      node<span class="token punctuation">.</span><span class="token property-access">path</span> <span class="token operator">+=</span> <span class="token number">1</span>
+      node <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    node<span class="token punctuation">.</span><span class="token property-access">end</span> <span class="token operator">+=</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 搜索字符串出现的次数</span>
+  <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>str<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span>
+    <span class="token keyword">let</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> index <span class="token operator">=</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">charCodeAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token string">'a'</span><span class="token punctuation">.</span><span class="token method function property-access">charCodeAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">// 如果索引对应没有值，代表没有需要搜素的字符串</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">return</span> <span class="token number">0</span>
+      <span class="token punctuation">}</span>
+      node <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> node<span class="token punctuation">.</span><span class="token property-access">end</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 删除字符串</span>
+  <span class="token keyword">delete</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">search</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span>
+    <span class="token keyword">let</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">root</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> index <span class="token operator">=</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">charCodeAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token string">'a'</span><span class="token punctuation">.</span><span class="token method function property-access">charCodeAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">// 如果索引对应的节点的 Path 为 0，代表经过该节点的字符串</span>
+      <span class="token comment">// 已经一个，直接删除即可</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">--</span>node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">path</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword null nil">null</span>
+        <span class="token keyword control-flow">return</span>
+      <span class="token punctuation">}</span>
+      node <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">next</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    node<span class="token punctuation">.</span><span class="token property-access">end</span> <span class="token operator">-=</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="%E5%B9%B6%E6%9F%A5%E9%9B%86">并查集<a class="anchor" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5-5">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5-5">§</a></h3>
+<p>并查集是一种特殊的树结构，用于处理一些不交集的合并及查询问题。该结构中每个节点都有一个父节点，如果只有当前一个节点，那么该节点的父节点指向自己。</p>
+<p>这个结构中有两个重要的操作，分别是：</p>
+<ul>
+<li>Find：确定元素属于哪一个子集。它可以被用来确定两个元素是否属于同一子集。</li>
+<li>Union：将两个子集合并成同一个集合。</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/9/163e45b56fd25172?w=421&amp;h=209&amp;f=png&amp;s=26545" alt=""></p>
+<h3 id="%E5%AE%9E%E7%8E%B0-6">实现<a class="anchor" href="#%E5%AE%9E%E7%8E%B0-6">§</a></h3>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">DisjointSet</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 初始化样本</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">count</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 初始化时，每个节点的父节点都是自己</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
+    <span class="token comment">// 用于记录树的深度，优化搜索复杂度</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">p</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 寻找当前节点的父节点是否为自己，不是的话表示还没找到</span>
+    <span class="token comment">// 开始进行路径压缩优化</span>
+    <span class="token comment">// 假设当前节点父节点为 A</span>
+    <span class="token comment">// 将当前节点挂载到 A 节点的父节点上，达到压缩深度的目的</span>
+    <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span>
+      p <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> p
+  <span class="token punctuation">}</span>
+  <span class="token function">isConnected</span><span class="token punctuation">(</span><span class="token parameter">p<span class="token punctuation">,</span> q</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 合并</span>
+  <span class="token function">union</span><span class="token punctuation">(</span><span class="token parameter">p<span class="token punctuation">,</span> q</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 找到两个数字的父节点</span>
+    <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>i <span class="token operator">===</span> j<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span>
+    <span class="token comment">// 判断两棵树的深度，深度小的加到深度大的树下面</span>
+    <span class="token comment">// 如果两棵树深度相等，那就无所谓怎么加</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> i
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">parent</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">rank</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="%E5%A0%86">堆<a class="anchor" href="#%E5%A0%86">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5-6">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5-6">§</a></h3>
+<p>堆通常是一个可以被看做一棵树的数组对象。</p>
+<p>堆的实现通过构造<strong>二叉堆</strong>，实为二叉树的一种。这种数据结构具有以下性质。</p>
+<ul>
+<li>任意节点小于（或大于）它的所有子节点</li>
+<li>堆总是一棵完全树。即除了最底层，其他层的节点都被元素填满，且最底层从左到右填入。</li>
+</ul>
+<p>将根节点最大的堆叫做<strong>最大堆</strong>或<strong>大根堆</strong>，根节点最小的堆叫做<strong>最小堆</strong>或<strong>小根堆</strong>。</p>
+<p>优先队列也完全可以用堆来实现，操作是一模一样的。</p>
+<h3 id="%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%A0%B9%E5%A0%86">实现大根堆<a class="anchor" href="#%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%A0%B9%E5%A0%86">§</a></h3>
+<p>堆的每个节点的左边子节点索引是 <code>i * 2 + 1</code>，右边是 <code>i * 2 + 2</code>，父节点是 <code>(i - 1) /2</code>。</p>
+<p>堆有两个核心的操作，分别是 <code>shiftUp</code> 和 <code>shiftDown</code> 。前者用于添加元素，后者用于删除根节点。</p>
+<p><code>shiftUp</code> 的核心思路是一路将节点与父节点对比大小，如果比父节点大，就和父节点交换位置。</p>
+<p><code>shiftDown</code> 的核心思路是先将根节点和末尾交换位置，然后移除末尾元素。接下来循环判断父节点和两个子节点的大小，如果子节点大，就把最大的子节点和父节点交换。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/15/164009e58a5a21f8?w=537&amp;h=394&amp;f=png&amp;s=77222" alt=""></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">MaxHeap</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">.</span><span class="token property-access">length</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_shiftUp</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">removeMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_shiftDown</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getParentIndex</span><span class="token punctuation">(</span><span class="token parameter">k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getLeftIndex</span><span class="token punctuation">(</span><span class="token parameter">k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> k <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">_shiftUp</span><span class="token punctuation">(</span><span class="token parameter">k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 如果当前节点比父节点大，就交换</span>
+    <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getParentIndex</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_swap</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getParentIndex</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token comment">// 将索引变成父节点</span>
+      k <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getParentIndex</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">_shiftDown</span><span class="token punctuation">(</span><span class="token parameter">k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 交换首位并删除末尾</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_swap</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">.</span><span class="token method function property-access">splice</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token comment">// 判断节点是否有左孩子，因为二叉堆的特性，有右必有左</span>
+    <span class="token keyword control-flow">while</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLeftIndex</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">getLeftIndex</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span>
+      <span class="token comment">// 判断是否有右孩子，并且右孩子是否大于左孩子</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span>
+      <span class="token comment">// 判断父节点是否已经比子节点都大</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword control-flow">break</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">_swap</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> j<span class="token punctuation">)</span>
+      k <span class="token operator">=</span> j
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">_swap</span><span class="token punctuation">(</span><span class="token parameter">left<span class="token punctuation">,</span> right</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> rightValue <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>right<span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">heap</span><span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">=</span> rightValue
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></article><div class="prev_next"><a class="prev button" href="/interview/HTTP.html">«  <!-- -->网络</a><a class="next button" href="/interview/Algorithm.html">算法<!-- -->  »</a></div><div id="gitalk-container"></div><link id="gitalk-css" rel="preload" href="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.css" as="style"/><script defer="" src="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.min.js"></script></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a><ol><li><a href="#%E6%A0%88">栈</a><ol><li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0">实现</a></li><li><a href="#%E5%BA%94%E7%94%A8">应用</a></li></ol></li><li><a href="#%E9%98%9F%E5%88%97">队列</a><ol><li><a href="#%E6%A6%82%E5%BF%B5-1">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0-1">实现</a><ol><li><a href="#%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97">单链队列</a></li></ol></li><li><a href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97">循环队列</a></li></ol></li><li><a href="#%E9%93%BE%E8%A1%A8">链表</a><ol><li><a href="#%E6%A6%82%E5%BF%B5-2">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0-2">实现</a></li></ol></li><li><a href="#%E6%A0%91">树</a><ol><li><a href="#%E4%BA%8C%E5%8F%89%E6%A0%91">二叉树</a></li><li><a href="#%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E6%A0%91">二分搜索树</a><ol><li><a href="#%E5%AE%9E%E7%8E%B0-3">实现</a></li></ol></li></ol></li><li><a href="#avl-%E6%A0%91">AVL 树</a><ol><li><a href="#%E6%A6%82%E5%BF%B5-3">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0-4">实现</a></li></ol></li><li><a href="#trie">Trie</a><ol><li><a href="#%E6%A6%82%E5%BF%B5-4">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0-5">实现</a></li></ol></li><li><a href="#%E5%B9%B6%E6%9F%A5%E9%9B%86">并查集</a><ol><li><a href="#%E6%A6%82%E5%BF%B5-5">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0-6">实现</a></li></ol></li><li><a href="#%E5%A0%86">堆</a><ol><li><a href="#%E6%A6%82%E5%BF%B5-6">概念</a></li><li><a href="#%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%A0%B9%E5%A0%86">实现大根堆</a></li></ol></li></ol></li></ol></nav></div></aside></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-pen button" href="https://github.com/ViktorWong/my-docs/edit/master/docs/interview/DataStructure.md" target="_blank" style="background-image:url(&quot;/assets/czs-pen.svg&quot;)"></a><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

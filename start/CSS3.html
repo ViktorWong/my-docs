@@ -1,0 +1,251 @@
+<!doctype html><html class="" data-reactroot=""><head><link rel="icon" type="image/png" href="/favicon.png"/><script src="/assets/custom.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"/>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="我的图书馆"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">CSS3新特性 · ViktorHub</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/">ViktorHub</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">ViktorHub</a></h1></li><li class="hide_on_mobile"><a href="/collection/index.html">秘籍收藏</a></li><li class="hide_on_mobile"><a href="/interview/index.html">面霸心经</a></li><li class="hide_on_mobile"><a href="/start/index.html">修仙入门</a></li><li class="hide_on_mobile"><a href="/advanced/index.html">进阶功法</a></li><li class="hide_on_mobile"><a href="/crossover/RN.html">跨界码王</a></li><li class="hide_on_mobile"><a href="http://www.itdongdong.com" target="_blank">投桃报李</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/ViktorWong/my-docs" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class=""><a href="/start/CSS.html" class="nav_link">CSS 入门</a></li><li class=""><a href="/start/CSS3.html" class="nav_link active">CSS3新特性</a></li><li class=""><a href="/start/JS.html" class="nav_link">深入 JavaScript</a></li><li class=""><a href="/start/Mobile.html" class="nav_link">移动端常见问题</a></li><li class=""><a href="/start/Performance.html" class="nav_link">性能优化</a></li><li class=""><a href="/start/Codeing.html" class="nav_link">代码重构经验</a></li><li class=""><a href="/start/Mobx.html" class="nav_link">Mobx</a></li></ol></aside><section class="main"><div class="main_article"><article><h1 id="css3%E6%96%B0%E7%89%B9%E6%80%A7">CSS3新特性<a class="anchor" href="#css3%E6%96%B0%E7%89%B9%E6%80%A7">§</a></h1>
+<h2 id="css3%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88">css3新特性概览<a class="anchor" href="#css3%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88">§</a></h2>
+<ol>
+<li>css3选择器，与jq一样，强化了选择器功能，包括了数量、层次、属性选择器</li>
+<li>原先通过图片或者脚本实现视觉效果通过样式实现，减少了标签和脚本的使用，降低维护成本</li>
+<li>背景：支持背景大小，多背景设置，减少了标签，更加灵活</li>
+<li>盒模型：拓展了盒模型的类型，尤其弹性盒模型flex；支持了盒模型的变形，旋转，缩放，扭曲等</li>
+<li>实现了多列布局，摆脱了只能浮动多列布局</li>
+<li>阴影效果：文本阴影，盒阴影，简单的阴影效果可以跳过设计稿</li>
+<li>web字体解决了浏览器无法识别的字体；web font图标，更加灵活的使用图标字体，减少了维护工作</li>
+<li>颜色与透明度，支持了多种颜色模式，支持透明度设置</li>
+<li>圆角与边框，更加丰富的设计效果实现，去除直角实边的单一效果</li>
+<li>过度与动画交互效果，可以设置动画进行简单的交互，提升体验</li>
+<li>媒体特性与响应式布局，boot框架就是基于这点建立的栅格系统</li>
+</ol>
+<h2 id="background-sizeclip">background-size，clip<a class="anchor" href="#background-sizeclip">§</a></h2>
+<h3 id="background-size">background-size<a class="anchor" href="#background-size">§</a></h3>
+<p>一般情况下，我们设置的背景图与背景为完全匹配，但也有情况是可能不匹配的，或者大或者小，那么当尺寸不匹配时，你希望如何控制尺寸呢？这就是<code>background-size</code>的价值所在。</p>
+<p>可能取值：<code>px|percentage|cover|contain</code>,详细说明如下：</p>
+<div class="table_wrapper"><table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>px</td>
+<td>设置背景图像的宽度和高度，如果只设置一个，第二个被认为auto</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>设置背景图像的宽度和高度，如果只设置一个，第二个被认为auto</td>
+</tr>
+<tr>
+<td>contain</td>
+<td>缩放背景图像，让其能显示完整</td>
+</tr>
+<tr>
+<td>cover</td>
+<td>缩放其图像，让其能完全覆盖区域，但可能背景显示不全</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>兼容性：ie9+以及现代浏览器</li>
+</ul>
+<h3 id="background-clip">background-clip<a class="anchor" href="#background-clip">§</a></h3>
+<p>背景裁剪一般用于控制其背景的显示策略，显示覆盖区域，常规默认是覆盖全部也就是border-box的。
+可能取值：<code>padding-box|content-box|border-box</code>,与<code>box-sizing</code>一致的取值范围。</p>
+<p>兼容性：ie9+以及现代浏览器</p>
+<h2 id="animation">animation<a class="anchor" href="#animation">§</a></h2>
+<p>animation　css3属性设置动画，css复合属性，可以追加多个css属性，不可被继承，　　
+@keyframes定动画,可以定义动画的起始位置，有参考点，定义位置属性等</p>
+<h3 id="%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">基本语法<a class="anchor" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">§</a></h3>
+<ul>
+<li>animation-name 规定的动画名称 与keyframes 里面的名称对应</li>
+<li>animation-duration 规定动画完成一个周期所需要的时间，如果为0 表示没有动画</li>
+<li>animation-direction 定义的方向 ie10以上支持 ，normal 正常播放，alternate 偶数反方向播放</li>
+<li>animation-timing-function： linear 从头到尾相同的 ease 开始和结束慢 ease-in 开始慢 ease-out 结束慢 - ease-in-out 以低俗开始和结束 cubic-bezier(n,n,n,n) 速度曲线 可能是0-1 之间的数值</li>
+<li>animation-delay 动画延迟时间</li>
+<li>animation-iteration-count :n infinite 指定次数或者无限次</li>
+<li>animation-play-state :paused running 规定以暂定或者进行中</li>
+<li>animation-fill-mode :none,forwards backwards both 动画完成之后的样式状态 无 默认的 ；最后一个状态 ，最开始的状态，兼容状态</li>
+</ul>
+<h3 id="%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0">参考文章<a class="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0">§</a></h3>
+<p><a href="https://www.zhangxinxu.com/wordpress/2013/06/css3-animation-%E7%82%B9%E7%82%B9%E7%82%B9%E7%AD%89%E5%BE%85%E6%8F%90%E7%A4%BA%E6%95%88%E6%9E%9C/">css3 animation(张鑫旭)</a></p>
+<h2 id="%E5%8A%A8%E7%94%BB--%E8%BF%87%E6%B8%A1">动画--过渡<a class="anchor" href="#%E5%8A%A8%E7%94%BB--%E8%BF%87%E6%B8%A1">§</a></h2>
+<p>Css3可以给元素添加一些效果，而过渡可以让元素从一种样式转换成另一种样式。其中可以设置动画执行的样式，时间，重复等。</p>
+<h3 id="%E5%B1%9E%E6%80%A7">属性<a class="anchor" href="#%E5%B1%9E%E6%80%A7">§</a></h3>
+<ul>
+<li>transition
+设置四个过渡属性</li>
+<li>transition-property
+过渡的名称</li>
+<li>transition-duration
+过渡效果花费的时间</li>
+<li>transition-timing-function
+过渡效果的时间曲线</li>
+<li>transition-delay
+过渡效果开始时间，延迟开始的时间</li>
+</ul>
+<h3 id="%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现<a class="anchor" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">§</a></h3>
+<p>代码实现效果鼠标覆盖元素变大为原来的两倍并旋转360度。不考虑兼容代码。</p>
+<pre class="language-css"><code class="language-css"><span class="token selector"><span class="token class">.demo</span></span><span class="token punctuation">{</span>
+<span class="token property">width</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token unit">px</span><span class="token punctuation">;</span>
+<span class="token property">height</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token unit">px</span><span class="token punctuation">;</span>
+<span class="token property">background</span><span class="token punctuation">:</span><span class="token color">blue</span><span class="token punctuation">;</span>
+<span class="token property">transition</span><span class="token punctuation">:</span>width <span class="token number">2</span><span class="token unit">s</span><span class="token punctuation">,</span>height <span class="token number">2</span><span class="token unit">s</span>，transform <span class="token number">2</span><span class="token unit">s</span>；
+<span class="token punctuation">}</span> 
+<span class="token selector"><span class="token class">.demo</span><span class="token pseudo-class">:hover</span></span><span class="token punctuation">{</span>
+<span class="token property">width</span><span class="token punctuation">:</span><span class="token number">200</span><span class="token unit">px</span><span class="token punctuation">;</span>
+<span class="token property">height</span><span class="token punctuation">:</span><span class="token number">200</span><span class="token unit">px</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span><span class="token function">rotate</span><span class="token punctuation">(</span><span class="token number">360</span><span class="token unit">deg</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="white-space">white-space<a class="anchor" href="#white-space">§</a></h2>
+<h3 id="%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95">定义和用法<a class="anchor" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95">§</a></h3>
+<p>white-space 属性设置如何处理元素内的空白。</p>
+<p>这个属性声明建立布局过程中如何处理元素中的空白符。值 pre-wrap 和 pre-line 是 CSS 2.1 中新增的。</p>
+<div class="table_wrapper"><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认值</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>继承性</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>版本</td>
+<td>CSS1</td>
+</tr>
+<tr>
+<td>JavaScript 语法</td>
+<td>object.style.whiteSpace=&quot;pre&quot;</td>
+</tr>
+<tr>
+<td>浏览器支持</td>
+<td>所有浏览器都支持 white-space 属性，任何的版本的 Internet Explorer （包括 IE8）都不支持属性值 &quot;inherit&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="%E5%8F%AF%E8%83%BD%E7%9A%84%E5%80%BC">可能的值<a class="anchor" href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E5%80%BC">§</a></h3>
+<div class="table_wrapper"><table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal</td>
+<td>默认。空白会被浏览器忽略</td>
+</tr>
+<tr>
+<td>pre</td>
+<td>空白会被浏览器保留。其行为方式类似 HTML 中的 &lt;pre&gt; 标签</td>
+</tr>
+<tr>
+<td>nowrap</td>
+<td>文本不会换行，文本会在在同一行上继续，直到遇到&lt;br&gt; 标签为止</td>
+</tr>
+<tr>
+<td>pre-wrap</td>
+<td>保留空白符序列，但是正常地进行换行</td>
+</tr>
+<tr>
+<td>pre-line</td>
+<td>合并空白符序列，但是保留换行符</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 white-space 属性的值</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="%E5%8F%AF%E8%83%BD%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">可能使用场景<a class="anchor" href="#%E5%8F%AF%E8%83%BD%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">§</a></h3>
+<p>使用text-overflow:ellipsis对溢出文本显示省略号有两个好处，一是不用通过程序限定字数；二是有利于SEO。需要使用对对溢出文本显示省略号的通常是文章标题列表，这样处理对搜索引擎更友好，因为标题实际上并未被截字，而是局限于宽度而未被显示而已。</p>
+<p>通常的做法是这样的：</p>
+<pre class="language-css"><code class="language-css"><span class="token property">overflow</span><span class="token punctuation">:</span>hidden<span class="token punctuation">;</span>
+<span class="token property">text-overflow</span><span class="token punctuation">:</span>ellipsis<span class="token punctuation">;</span>
+<span class="token property">-o-text-overflow</span><span class="token punctuation">:</span>ellipsis<span class="token punctuation">;</span>
+<span class="token property">white-space</span><span class="token punctuation">:</span>nowrap<span class="token punctuation">;</span>
+<span class="token property">width</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span>
+</code></pre>
+<p>其中，overflow: hidden和white-space: nowrap都是必须的否则不会显示省略号；-o-text-overflow: ellipsis针对Opera；而宽度的设定主要是针对IE6；</p>
+<p>该方法支持Internet Explorer, Safari, Chrome 和 Opera，但FF并不支持，不过可以通过Jquery来实现类似的效果。</p>
+<pre class="language-css"><code class="language-css"><span class="token property">-moz-box-flex</span><span class="token punctuation">:</span><span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">/* Firefox */</span>
+<span class="token property">-webkit-box-flex</span><span class="token punctuation">:</span><span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">/* Safari 和 Chrome */</span> 浏览器支持的可伸缩元素
+</code></pre>
+<h2 id="css3%E7%9A%84%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2">css3的媒体查询<a class="anchor" href="#css3%E7%9A%84%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2">§</a></h2>
+<p>通过css3的媒体查询你可以根据不同的设备具体情况来定制你的页面。</p>
+<h3 id="%E6%9F%A5%E8%AF%A2%E5%86%85%E5%AE%B9">查询内容<a class="anchor" href="#%E6%9F%A5%E8%AF%A2%E5%86%85%E5%AE%B9">§</a></h3>
+<pre class="language-css"><code class="language-css">* <span class="token property">width</span><span class="token punctuation">:</span>浏览器可视宽度。
+<span class="token operator">*</span> <span class="token property">height</span><span class="token punctuation">:</span>浏览器可视高度。
+<span class="token operator">*</span> <span class="token property">device-width</span><span class="token punctuation">:</span>设备屏幕的宽度。
+<span class="token operator">*</span> <span class="token property">device-height</span><span class="token punctuation">:</span>设备屏幕的高度。
+<span class="token operator">*</span> <span class="token property">orientation</span><span class="token punctuation">:</span>检测设备目前处于横向还是纵向状态。
+<span class="token operator">*</span> <span class="token property">aspect-ratio</span><span class="token punctuation">:</span>检测浏览器可视宽度和高度的比例。<span class="token punctuation">(</span><span class="token property">例如：aspect-ratio</span><span class="token punctuation">:</span><span class="token number">16</span>/<span class="token number">9</span><span class="token punctuation">)</span>
+<span class="token operator">*</span> <span class="token property">device-aspect-ratio</span><span class="token punctuation">:</span>检测设备的宽度和高度的比例。
+<span class="token operator">*</span> <span class="token property">color</span><span class="token punctuation">:</span><span class="token property">检测颜色的位数。（例如：min-color</span><span class="token punctuation">:</span><span class="token number">32</span>就会检测设备是否拥有<span class="token number">32</span>位颜色）
+<span class="token operator">*</span> <span class="token property">color-index</span><span class="token punctuation">:</span>检查设备颜色索引表中的颜色，他的值不能是负数。
+<span class="token operator">*</span> <span class="token property">monochrome</span><span class="token punctuation">:</span>检测单色楨缓冲区域中的每个像素的位数。（这个太高级，估计咱很少会用的到）
+<span class="token operator">*</span> <span class="token property">resolution</span><span class="token punctuation">:</span>检测屏幕或打印机的分辨率。<span class="token punctuation">(</span><span class="token property">例如：min-resolution</span><span class="token punctuation">:</span><span class="token number">300</span><span class="token property">dpi或min-resolution</span><span class="token punctuation">:</span><span class="token number">118</span><span class="token unit">dpcm</span><span class="token punctuation">)</span>。
+<span class="token operator">*</span>  grid：检测输出的设备是网格的还是位图设备。
+</code></pre>
+<h3 id="%E7%94%A8%E6%B3%95">用法<a class="anchor" href="#%E7%94%A8%E6%B3%95">§</a></h3>
+<p>css3 的 写法 ：如果你是写最小宽度，最大宽度的限制，为了简便，建议你从最小宽度开始写，依次写最小宽度即可。</p>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span> <span class="token punctuation">:</span> <span class="token number">768</span> px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+     <span class="token selector"><span class="token class">.container</span></span> <span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token unit">%</span>；
+      <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span> <span class="token punctuation">:</span> <span class="token number">1024</span> px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+     <span class="token selector"><span class="token class">.container</span></span> <span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">1024</span><span class="token unit">px</span>
+      <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>也可以直接写link文件中，根据不同分辨率用不同的样式文件渲染</p>
+<p><code>&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; media=&amp;quot;min-width=900&amp;quot; /&amp;gt;</code></p>
+<h2 id="%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98">线性渐变<a class="anchor" href="#%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98">§</a></h2>
+<h3 id="%E6%A6%82%E5%BF%B5">概念<a class="anchor" href="#%E6%A6%82%E5%BF%B5">§</a></h3>
+<p>CSS linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片。其结果属于&lt;gradient&gt;数据类型，是一种特别的<code>&lt;image&gt;</code>数据类型。</p>
+<h3 id="%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1">基本语法<a class="anchor" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1">§</a></h3>
+<p><code>linear-gradient([&lt;angle&gt; | to &lt;side-or-corner&gt;]? , &lt;color-stop-list&gt;)</code></p>
+<p>这个函数（特性）接受的第一个参数是渐变的角度，他可以接受一个表示角度的值（可用的单位deg、rad、grad或turn）或者是表示方向的关键词（top、right、bottom、left、left top、top right、bottom right或者left bottom）。第二个参数是接受一系列颜色节点（终止点的颜色）。</p>
+<h3 id="%E6%B8%B2%E6%9F%93%E5%AE%B9%E5%99%A8">渲染容器<a class="anchor" href="#%E6%B8%B2%E6%9F%93%E5%AE%B9%E5%99%A8">§</a></h3>
+<p>其本身没有单独容器概念，大小只能是元素的border-box.不能选择性的线性渐变内容盒等。</p>
+<h3 id="%E6%B8%90%E5%8F%98%E8%A7%92%E5%BA%A6">渐变角度<a class="anchor" href="#%E6%B8%90%E5%8F%98%E8%A7%92%E5%BA%A6">§</a></h3>
+<p>默认值 to bottom 等于 180deg,如果是目标的效果可以不再额外设置。渐变夹角为元素中心点垂直线与渐变线之间形成的夹角。(借用大漠老师的图)</p>
+<p><img src="/css/linear.png" alt="linear"></p>
+<ol>
+<li>这里的夹角不是与水平线的，我当初也以为是水平夹角；</li>
+<li>就是如果你希望渐变线到元素的右上角部分，这个部分不一定是45deg,而关键字设置的top right 一定是右上角。</li>
+</ol>
+<h3 id="%E6%B8%90%E5%8F%98%E7%BA%BF">渐变线<a class="anchor" href="#%E6%B8%90%E5%8F%98%E7%BA%BF">§</a></h3>
+<p><img src="/css/linearGradient.gif" alt="linearGradient"></p>
+<p>从上面的图中我们可以看到渐变线，也就是当前中心点的垂线旋转渐变角度之后的线，它的长度是与宽高以及角度相关的，可能会超出容器。如果角度为90，那么渐变线长度为元素的高，如果角度为0，那么长度为元素的宽度。其他角度自己可以根据公式去计算，sin(a)*w+cos(a)*h.</p>
+<p>有兴趣的同学可以参照我的图纸看下这个公式如何得来的,比较简陋，嘿嘿。</p>
+<p><img src="/css/caotu.jpeg" alt="caotu"></p>
+<p>解题过程如下：</p>
+<p>希望你数学不是那么差可以看懂哦。如果有更好的方法欢迎反馈。</p>
+<pre class="language-autoit"><code class="language-autoit">l1<span class="token operator">=</span>h<span class="token operator">/</span><span class="token number">2</span><span class="token operator">/</span><span class="token function">cos</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment">;</span>
+l2<span class="token operator">=</span>d2<span class="token operator">*</span><span class="token function">sin</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment">;</span>
+d2<span class="token operator">=</span>w<span class="token operator">/</span><span class="token number">2</span><span class="token operator">-</span>d1<span class="token comment">;</span>
+d1<span class="token operator">=</span>l1<span class="token operator">*</span><span class="token function">sin</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment">;</span>
+最终计算 l<span class="token operator">=</span><span class="token number">2</span><span class="token operator">*</span><span class="token punctuation">(</span>l1<span class="token operator">+</span>l2<span class="token punctuation">)</span><span class="token operator">=</span>w<span class="token operator">*</span><span class="token function">sin</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token operator">+</span>h<span class="token operator">*</span><span class="token function">cos</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment">;</span>
+</code></pre>
+<p>渐变线的长度直接影响线性渐变的细腻程度。长度越长，过渡色越多。</p></article><div class="prev_next"><a class="prev button" href="/start/CSS.html">«  <!-- -->CSS 入门</a><a class="next button" href="/start/JS.html">深入 JavaScript<!-- -->  »</a></div><div id="gitalk-container"></div><link id="gitalk-css" rel="preload" href="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.css" as="style"/><script defer="" src="https://cdn.pagic.org/gitalk@1.6.2/dist/gitalk.min.js"></script></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#css3%E6%96%B0%E7%89%B9%E6%80%A7">CSS3新特性</a><ol><li><a href="#css3%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88">css3新特性概览</a></li><li><a href="#background-sizeclip">background-size，clip</a><ol><li><a href="#background-size">background-size</a></li><li><a href="#background-clip">background-clip</a></li></ol></li><li><a href="#animation">animation</a><ol><li><a href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">基本语法</a></li><li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0">参考文章</a></li></ol></li><li><a href="#%E5%8A%A8%E7%94%BB--%E8%BF%87%E6%B8%A1">动画--过渡</a><ol><li><a href="#%E5%B1%9E%E6%80%A7">属性</a></li><li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a></li></ol></li><li><a href="#white-space">white-space</a><ol><li><a href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95">定义和用法</a></li><li><a href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E5%80%BC">可能的值</a></li><li><a href="#%E5%8F%AF%E8%83%BD%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">可能使用场景</a></li></ol></li><li><a href="#css3%E7%9A%84%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2">css3的媒体查询</a><ol><li><a href="#%E6%9F%A5%E8%AF%A2%E5%86%85%E5%AE%B9">查询内容</a></li><li><a href="#%E7%94%A8%E6%B3%95">用法</a></li></ol></li><li><a href="#%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98">线性渐变</a><ol><li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li><li><a href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1">基本语法</a></li><li><a href="#%E6%B8%B2%E6%9F%93%E5%AE%B9%E5%99%A8">渲染容器</a></li><li><a href="#%E6%B8%90%E5%8F%98%E8%A7%92%E5%BA%A6">渐变角度</a></li><li><a href="#%E6%B8%90%E5%8F%98%E7%BA%BF">渐变线</a></li></ol></li></ol></li></ol></nav></div></aside></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-pen button" href="https://github.com/ViktorWong/my-docs/edit/master/docs/start/CSS3.md" target="_blank" style="background-image:url(&quot;/assets/czs-pen.svg&quot;)"></a><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
