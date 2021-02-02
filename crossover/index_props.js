@@ -14,7 +14,9 @@ export default {
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
             __html: '<!--\nAuthor: Viktor (victor318x@gmail.com)\nREADME.md (c) 2021\nDesc: description\nCreated:  2021/2/2 下午7:16:47\nModified: 2021/2/2 下午7:17:40\n-->\n<h1 id="%E8%B7%A8%E7%95%8C%E7%A0%81%E7%8E%8B">跨界码王<a class="anchor" href="#%E8%B7%A8%E7%95%8C%E7%A0%81%E7%8E%8B">§</a></h1>'
         } }),
-    'head': React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+    'head': React.createElement(React.Fragment, null,
+        React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+        React.createElement("script", { async: true, "data-ad-client": "ca-pub-5052023368276507", src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" })),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
@@ -31,7 +33,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T11:21:57.000Z",
+    'date': "2021-02-02T15:43:32.000Z",
     'updated': null,
     'excerpt': "跨界码王",
     'cover': undefined,

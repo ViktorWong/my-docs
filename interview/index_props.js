@@ -14,7 +14,9 @@ export default {
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
             __html: '<h1 id="%E9%9D%A2%E9%9C%B8%E5%BF%83%E7%BB%8F">面霸心经<a class="anchor" href="#%E9%9D%A2%E9%9C%B8%E5%BF%83%E7%BB%8F">§</a></h1>'
         } }),
-    'head': React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+    'head': React.createElement(React.Fragment, null,
+        React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+        React.createElement("script", { async: true, "data-ad-client": "ca-pub-5052023368276507", src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" })),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
@@ -33,7 +35,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T11:21:57.000Z",
+    'date': "2021-02-02T15:43:32.000Z",
     'updated': null,
     'excerpt': "",
     'cover': undefined,

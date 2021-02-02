@@ -11,7 +11,9 @@ export default {
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
             __html: '<!--\nAuthor: Viktor (victor318x@gmail.com)\nREADME.md (c) 2021\nDesc: description\nCreated:  2021/2/2 下午4:49:15\nModified: 2021/2/2 下午4:49:18\n-->\n<h1 id="%E8%BF%9B%E9%98%B6%E5%8A%9F%E6%B3%95">进阶功法<a class="anchor" href="#%E8%BF%9B%E9%98%B6%E5%8A%9F%E6%B3%95">§</a></h1>'
         } }),
-    'head': React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+    'head': React.createElement(React.Fragment, null,
+        React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+        React.createElement("script", { async: true, "data-ad-client": "ca-pub-5052023368276507", src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" })),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
@@ -28,7 +30,7 @@ export default {
     'contributors': [
         "wangweidong"
     ],
-    'date': "2021-02-02T11:21:57.000Z",
+    'date': "2021-02-02T15:43:32.000Z",
     'updated': null,
     'excerpt': "进阶功法",
     'cover': undefined,

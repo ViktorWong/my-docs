@@ -34,11 +34,10 @@ export default {
                 repo: 'my-docs'
             },
             github: 'https://github.com/ViktorWong/my-docs',
-            head: React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+            head: React.createElement(React.Fragment, null,
+                React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+                React.createElement("script", { async: true, "data-ad-client": "ca-pub-5052023368276507", src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" })),
             include: undefined,
-            includes: [
-                'assets'
-            ],
             md: {
                 anchorLevel: [
                     1,
@@ -150,14 +149,17 @@ export default {
             srcDir: 'docs',
             theme: 'docs',
             title: 'Viktor‘s Docs',
-            tocAd: React.createElement("div", { dangerouslySetInnerHTML: { __html: '\n <script data-ad-client="ca-pub-5052023368276507" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\n<!-- 192*128 -->\n<ins\n class="adsbygoogle"\n style="display:inline-block;width:192px;height:128px"\n data-ad-client="ca-pub-5052023368276507"\n></ins>\n<script>\n (adsbygoogle = window.adsbygoogle || []).push({});\n</script>' } }),
             tools: {
                 backToTop: true,
                 editOnGitHub: true
             },
             watch: false
-        }, content: null, head: React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }), layoutPath: "_layout.tsx", outputPath: "index.html", pagePath: "index.tsx", script: null, title: "" }),
-    'head': React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+        }, content: null, head: React.createElement(React.Fragment, null,
+            React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+            React.createElement("script", { async: true, "data-ad-client": "ca-pub-5052023368276507", src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" })), layoutPath: "_layout.tsx", outputPath: "index.html", pagePath: "index.tsx", script: null, title: "" }),
+    'head': React.createElement(React.Fragment, null,
+        React.createElement("link", { href: "/favicon.png", rel: "icon", type: "image/png" }),
+        React.createElement("script", { async: true, "data-ad-client": "ca-pub-5052023368276507", src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" })),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
